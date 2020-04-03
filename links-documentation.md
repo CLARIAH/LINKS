@@ -1,4 +1,5 @@
-# Introduction
+# LINKS linkage tool
+
 ## Purpose
 - to improve (and replace) the current [LINKS](https://iisg.amsterdam/en/hsn/projects/links) software. Points of improvement are:
     - extremely fast and scalable matching procedure using Levenshtein automata; 
@@ -13,6 +14,7 @@ The software is designed for the so called ‘digital’ historian: e.g. someone
 
 ## What it is not 
 In its current version, it cannot be used to match entities from just any source. The current tool is solely focused on the linkage of civil records, relying on the sanguineous relations on the civil record, modelled according to our Civil Registers schema. 
+
 
 # Technical specifications
 ## Installation requirements
@@ -48,15 +50,16 @@ The current version has six functionalities, specified by the user using --funct
 - `linkMarriageParentsToMarriageParents`: link parents of brides/grooms in Marriage Certificates to parents of brides/grooms in Marriage Certificates (for detecting siblings)
 
 ## All parameters that can be provided as input for the linkage tool:
-`--function` (required): One of the 6 following functionalities: [showDatasetStats, convertToHDT, linkNewbornToPartner, linkPartnerToPartner, linkSiblings, linkMarriageParentsToMarriageParents]
-`--inputData` (required for all functions): Path to the HDT dataset
-`--outputDir` (required for all functions, except for "showDatasetStats"): Path to the directory for saving the indices and the links
-`--maxLev` (required for all functions, except "showDatasetStats" and "convertToHDT"): Integer between 0 and 5, specifying the maximum Levenshtein distance allowed
-`--format` (optional for all functions, except "showDatasetStats" and "convertToHDT"): One of the two Strings: RDF (default) or CSV, specifying the desired format to save the links between certificates 
-`--debug` (optional for all functions): One of the two Strings: error (default, showing only errors in console that occurred in the matching), all (showing every warning in console)
+- `--function` (required): One of the 6 following functionalities: [showDatasetStats, convertToHDT, linkNewbornToPartner, linkPartnerToPartner, linkSiblings, linkMarriageParentsToMarriageParents]
+- `--inputData` (required for all functions): Path to the HDT dataset
+- `--outputDir` (required for all functions, except for "showDatasetStats"): Path to the directory for saving the indices and the links
+- `--maxLev` (required for all functions, except "showDatasetStats" and "convertToHDT"): Integer between 0 and 5, specifying the maximum Levenshtein distance allowed
+- `--format` (optional for all functions, except "showDatasetStats" and "convertToHDT"): One of the two Strings: RDF (default) or CSV, specifying the desired format to save the links between certificates 
+- `--debug` (optional for all functions): One of the two Strings: error (default, showing only errors in console that occurred in the matching), all (showing every warning in console)
+
 
 ## Example for linking marriage certificates in Zeeland dataset:
-`java -jar links.jar --function linkPartnerToPartner --inputData dataset-zeeland/certificates-zeeland.hdt --outputDir . --maxLev 1 --format CSV`
+```java -jar links.jar --function linkPartnerToPartner --inputData dataset-zeeland/certificates-zeeland.hdt --outputDir . --maxLev 1 --format CSV```
 
 
 # Performance
